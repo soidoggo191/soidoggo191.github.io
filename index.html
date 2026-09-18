@@ -1,21 +1,22 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>SoiDoggo191 — Real Dogs. Real Streets.</title>
-<meta name="description" content="SoiDoggo191 documents stray dogs in Kabin Buri, Thailand. Upload sightings, view recent photos with GPS, and support the mission via $SOI191." />
+<meta name="description" content="SoiDoggo191 documents stray dogs in Kabin Buri, Thailand. Upload sightings with GPS and support the mission." />
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 <style>
   :root{--accent:#ff6a00;--accent-2:#ff914d;--bg:#0b0f19;--card:rgba(255,255,255,0.05)}
   *{box-sizing:border-box;margin:0;padding:0;font-family:'Poppins',sans-serif;}
   html,body{height:100%}
   body{background:var(--bg);color:#fff;line-height:1.45;-webkit-font-smoothing:antialiased;}
-  .hero{height:48vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;border-bottom:6px solid rgba(255,255,255,0.03)}
+  .hero{height:48vh;position:relative;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:#07102a;}
+  .hero-bg{position:absolute;inset:0;background-size:cover;background-position:center center;filter:brightness(0.86);transition:opacity .35s ease;}
   .hero-svg{position:absolute;inset:0;width:100%;height:100%;}
   .hero-content{position:relative;z-index:2;padding:20px;}
-  .hero h1{font-size:2.4rem;margin-bottom:6px;}
-  .hero p{opacity:0.95;}
+  h1{font-size:2.4rem;margin-bottom:6px;}
+  p.lead{opacity:0.95;margin:0}
   .container{max-width:1100px;margin:26px auto;padding:0 18px;}
   .card{background:var(--card);padding:20px;border-radius:12px;backdrop-filter:blur(6px);margin-bottom:18px;}
   h2{margin-bottom:8px;}
@@ -31,46 +32,41 @@
   .small{font-size:0.95rem;opacity:0.95;}
   .note{font-style:italic;margin-top:10px;opacity:0.95;}
   .coords{font-weight:700;margin-top:8px}
-  @media (max-width:520px){ .hero h1{font-size:1.6rem} .container{margin:14px auto} .hero{height:36vh} }
-  /* coin style */
-  .coin{width:120px;height:120px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 12px 28px rgba(0,0,0,0.6);border:6px solid rgba(255,255,255,0.06);background:linear-gradient(180deg,#ffd27a,#ffb84a);}
-  .coin svg{width:68%;height:68%;}
-  a:focus, button:focus{outline:3px solid rgba(255,255,255,0.12);outline-offset:3px}
+  @media (max-width:520px){ h1{font-size:1.6rem} .container{margin:14px auto} .hero{height:36vh} }
+  .coin{width:140px;height:140px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 12px 28px rgba(0,0,0,0.6);border:6px solid rgba(255,255,255,0.06);overflow:hidden;background:#000}
+  .coin img{width:100%;height:100%;object-fit:cover;display:block;}
+  .hidden{display:none!important}
+  .loading-note{font-size:0.9rem;opacity:0.9;margin-top:6px}
 </style>
 </head>
 <body>
 
-<!-- HERO: inline SVG banner (always renders) -->
+<!-- HERO -->
 <section class="hero" aria-label="SoiDoggo191 hero banner">
+  <!-- background element: script will set background-image on this element when file is available -->
+  <div id="heroBg" class="hero-bg" aria-hidden="true" style="opacity:0"></div>
+
+  <!-- fallback inline svg banner (visible only if JS can't find images or before JS runs) -->
   <svg class="hero-svg" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice" role="img" aria-hidden="true">
-    <defs>
-      <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
-        <stop offset="0%" stop-color="#07102a"/>
-        <stop offset="60%" stop-color="#0b1628"/>
-        <stop offset="100%" stop-color="#0b0f19"/>
-      </linearGradient>
-    </defs>
+    <defs><linearGradient id="g1" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stop-color="#07102a"/><stop offset="60%" stop-color="#0b1628"/><stop offset="100%" stop-color="#0b0f19"/></linearGradient></defs>
     <rect width="1200" height="400" fill="url(#g1)"/>
-    <!-- stylized temple silhouette -->
     <g transform="translate(160,80) scale(1.05)" fill="#ffd27a" opacity="0.96">
       <path d="M0,120 L48,60 L96,120 L144,60 L192,120 L176,120 L176,168 L0,168 Z"/>
       <rect x="36" y="92" width="128" height="18" rx="4" />
     </g>
-    <!-- sun/coin shape -->
     <circle cx="1040" cy="80" r="64" fill="#ffcc66" opacity="0.98" />
-    <!-- headline text -->
     <text x="50%" y="52%" text-anchor="middle" fill="#fff" font-size="46" font-weight="700" font-family="Poppins, sans-serif" style="letter-spacing:1px">🐶 SoiDoggo191</text>
     <text x="50%" y="64%" text-anchor="middle" fill="#fff" font-size="18" font-weight="400">Real dogs. Real streets. Real support — Kabin Buri, Thailand</text>
   </svg>
 
   <div class="hero-content">
     <h1>🐶 SoiDoggo191</h1>
-    <p class="small">Real dogs. Real streets. Real support — Kabin Buri, Thailand</p>
+    <p class="lead">Real dogs. Real streets. Real support — Kabin Buri, Thailand</p>
   </div>
 </section>
 
 <main class="container" id="maincontent">
-  <section class="card" id="about">
+  <section class="card">
     <h2>❤️ What this really is</h2>
     <p class="small">
       This project is run by a person on the ground. The creator travels Kabin Buri to find, document, and help stray dogs.
@@ -82,8 +78,8 @@
   <section class="card" id="upload">
     <h2>📸 Community Upload (Limited)</h2>
     <p class="small">Limit 10 uploads per device per day. Uploaded photos are automatically removed locally after 3 days.</p>
-    <div class="actions" aria-hidden="false">
-      <input type="file" id="photoInput" accept="image/*" aria-label="Choose a photo to upload">
+    <div class="actions">
+      <input type="file" id="photoInput" accept="image/*" aria-label="Choose a photo">
       <button class="btn" id="uploadBtn" onclick="uploadDog()" aria-controls="gallery">Upload with GPS 📍</button>
     </div>
     <p class="small note">Uploads are stored locally on each device for now.</p>
@@ -107,14 +103,11 @@
 
     <div style="margin-top:12px;">
       <a id="buyLink" class="coin-link" href="#" target="_blank" rel="noopener" title="Buy $SOI191 (replace href with pump.fun link)">
-        <span class="coin" role="img" aria-label="Buy $SOI191 coin">
+        <!-- image will be replaced by script if coin file exists; otherwise fallback svg coin shown -->
+        <span id="coinWrap" class="coin" role="img" aria-label="Buy $SOI191 coin">
+          <!-- fallback svg coin -->
           <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <defs>
-              <linearGradient id="cg" x1="0" x2="0" y1="0" y2="1">
-                <stop offset="0%" stop-color="#ffe8a8"/>
-                <stop offset="100%" stop-color="#ffb84a"/>
-              </linearGradient>
-            </defs>
+            <defs><linearGradient id="cg" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#ffe8a8"/><stop offset="100%" stop-color="#ffb84a"/></linearGradient></defs>
             <circle cx="50" cy="50" r="46" fill="url(#cg)" stroke="#b36b00" stroke-width="2"/>
             <text x="50%" y="55%" text-anchor="middle" font-size="28" font-family="Poppins, sans-serif" fill="#5a2d00" font-weight="700">$</text>
             <text x="50%" y="78%" text-anchor="middle" font-size="10" fill="#5a2d00">SOI191</text>
@@ -151,11 +144,92 @@
 </main>
 
 <script>
-/* Local upload system (device-scoped)
-   - limit: 10 uploads per device per day
-   - auto-delete: remove local entries older than 3 days
-   - stores uploads in localStorage as array of {image,lat,lng,time}
+/*
+  This script tries multiple filename variants (common mistakes like double-extension or spaces)
+  so your banner/coin show up even if the files were uploaded as "banner.png.png" or "coin image.png".
+  It looks in the repo root (same folder as index.html).
 */
+(function(){
+  const heroBg = document.getElementById('heroBg');
+  const coinWrap = document.getElementById('coinWrap');
+  const coinParent = document.getElementById('coinWrap') && document.getElementById('coinWrap').parentNode;
+  const candidateBannerNames = [
+    'banner.png',
+    'banner.png.png',
+    'temple dog.png',
+    'temple%20dog.png',
+    'banner.jpg',
+    'banner.jpeg'
+  ];
+  const candidateCoinNames = [
+    'coin.png',
+    'coin.png.png',
+    'coin image.png',
+    'coin%20image.png',
+    'coin.jpg',
+    'coin.jpeg'
+  ];
+
+  // Helper to attempt loading an image; resolves true on load
+  function tryLoad(src){
+    return new Promise((resolve)=> {
+      const img = new Image();
+      img.onload = ()=> resolve({ok:true, src});
+      img.onerror = ()=> resolve({ok:false, src});
+      img.src = src;
+    });
+  }
+
+  // Try candidates one by one; returns first that loads
+  async function firstThatLoads(list){
+    for(const n of list){
+      // raw URL (same repo root) — when hosted on GitHub Pages the file will be relative to root
+      const rel = n;
+      const res = await tryLoad(rel);
+      if(res.ok) return rel;
+      // also try raw.githubusercontent (sometimes useful to test while editing) — not necessary for GH pages but safe
+      try {
+        const raw = `https://raw.githubusercontent.com/${location.hostname.split('.')[0] || 'soidoggo191'}/soidoggo191.github.io/main/${encodeURIComponent(n)}`;
+        const r2 = await tryLoad(raw);
+        if(r2.ok) return rel; // we still return the relative path so CSS uses same location
+      } catch(e){}
+    }
+    return null;
+  }
+
+  // Set hero background if a banner is found
+  (async function setBanner(){
+    const found = await firstThatLoads(candidateBannerNames);
+    if(found){
+      heroBg.style.backgroundImage = `url('${found}')`;
+      heroBg.style.opacity = '1';
+    } else {
+      // no banner found: keep SVG fallback (hero-bg hidden)
+      heroBg.style.opacity = '0';
+    }
+  })();
+
+  // Set coin image if a coin is found
+  (async function setCoin(){
+    const found = await firstThatLoads(candidateCoinNames);
+    if(found){
+      // replace the coinWrap content with an <img>
+      const img = document.createElement('img');
+      img.src = found;
+      img.alt = 'Buy $SOI191 — click to buy';
+      img.style.width = '100%';
+      img.style.height = '100%';
+      img.style.objectFit = 'cover';
+      // clear children and insert img
+      while(coinWrap.firstChild) coinWrap.removeChild(coinWrap.firstChild);
+      coinWrap.appendChild(img);
+    } else {
+      // keep the fallback svg already present
+    }
+  })();
+})();
+
+/* Upload / gallery logic (client-side only) */
 function uploadDog(){
   var fileEl = document.getElementById('photoInput');
   var file = fileEl.files[0];
@@ -167,7 +241,6 @@ function uploadDog(){
   if(todayCount >= 10){ alert('Daily upload limit reached (10)'); return; }
 
   var now = Date.now();
-  // prune >3 days
   uploads = uploads.filter(function(u){ return (now - u.time) < (3*24*60*60*1000); });
 
   navigator.geolocation.getCurrentPosition(function(pos){
@@ -214,14 +287,16 @@ function sendMail(){
   var subject = encodeURIComponent('Contact from SoiDoggo191 site — ' + name);
   var mailto = 'mailto:soidoggo191@gmail.com'
            + '?subject=' + subject
-           + '&body=' + encodeURIComponent(body + '\\n\\nFrom: ' + name);
+           + '&body=' + encodeURIComponent(body + '\n\nFrom: ' + name);
   window.location.href = mailto;
   return false;
 }
 
+// expose initial data
 document.getElementById('lat').textContent = '13.7560243';
 document.getElementById('lng').textContent = '100.4986793';
 document.getElementById('mapLink').href = 'https://www.google.com/maps/search/?api=1&query=13.7560243,100.4986793';
+renderGallery();
 </script>
 </body>
 </html>
