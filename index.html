@@ -5,28 +5,13 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>SoiDoggo191 — Real Dogs. Real Streets.</title>
 <meta name="description" content="SoiDoggo191 documents stray dogs in Kabin Buri, Thailand. Upload sightings, view recent photos with GPS, and support the mission via $SOI191." />
-<link rel="canonical" href="https://soidoggo191.github.io/" />
-<!-- Open Graph / Social -->
-<meta property="og:title" content="SoiDoggo191 — Real Dogs. Real Streets." />
-<meta property="og:description" content="Help find and document stray dogs in Kabin Buri. Upload photos with GPS and support via $SOI191." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://soidoggo191.github.io/" />
-<!-- fallback OG image: will work if you later upload banner.png to repo root -->
-<meta property="og:image" content="https://soidoggo191.github.io/banner.png" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="SoiDoggo191 — Real Dogs. Real Streets." />
-<meta name="twitter:description" content="Help find and document stray dogs in Kabin Buri. Upload photos with GPS and support via $SOI191." />
-
-<!-- Minimal favicon (emoji) as data URI -->
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐶</text></svg>">
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 <style>
   :root{--accent:#ff6a00;--accent-2:#ff914d;--bg:#0b0f19;--card:rgba(255,255,255,0.05)}
   *{box-sizing:border-box;margin:0;padding:0;font-family:'Poppins',sans-serif;}
   html,body{height:100%}
   body{background:var(--bg);color:#fff;line-height:1.45;-webkit-font-smoothing:antialiased;}
-  .hero{height:48vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;}
+  .hero{height:48vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;border-bottom:6px solid rgba(255,255,255,0.03)}
   .hero-svg{position:absolute;inset:0;width:100%;height:100%;}
   .hero-content{position:relative;z-index:2;padding:20px;}
   .hero h1{font-size:2.4rem;margin-bottom:6px;}
@@ -52,34 +37,31 @@
   .coin svg{width:68%;height:68%;}
   /* accessibility focus */
   a:focus, button:focus{outline:3px solid rgba(255,255,255,0.12);outline-offset:3px}
+  /* small helper to make the file copy-paste friendly */
+  pre{white-space:pre-wrap;word-break:break-word}
 </style>
 </head>
 <body>
 
-<!-- HERO: inline SVG banner (always renders) -->
+<!-- Inline SVG banner that will always render (this visually stands in for the temple/banner image) -->
 <section class="hero" aria-label="SoiDoggo191 hero banner">
   <svg class="hero-svg" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice" role="img" aria-hidden="true">
-    <!-- soft gradient background -->
     <defs>
       <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
         <stop offset="0%" stop-color="#07102a"/>
         <stop offset="60%" stop-color="#0b1628"/>
         <stop offset="100%" stop-color="#0b0f19"/>
       </linearGradient>
-      <filter id="grain"><feTurbulence baseFrequency="0.8" numOctaves="1" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+      <filter id="grain"><feTurbulence baseFrequency="0.8" numOctaves="1" stitchTiles="stitch"/></filter>
     </defs>
     <rect width="1200" height="400" fill="url(#g1)"/>
     <!-- stylized temple silhouette -->
-    <g transform="translate(200,60) scale(0.9)" fill="#ffd27a" opacity="0.95">
-      <path d="M0,150 L60,80 L120,150 L180,80 L240,150 L220,150 L220,200 L0,200 Z"/>
+    <g transform="translate(160,80) scale(1.05)" fill="#ffd27a" opacity="0.96">
+      <path d="M0,120 L48,60 L96,120 L144,60 L192,120 L176,120 L176,168 L0,168 Z"/>
+      <rect x="36" y="92" width="128" height="18" rx="4" />
     </g>
-    <!-- "coin" sun -->
-    <circle cx="1040" cy="80" r="58" fill="#ffcc66" opacity="0.95"/>
-
-    <!-- decorative paw -->
-    <g transform="translate(70,60)" fill="#ffffff" opacity="0.06">
-      <circle cx="0" cy="0" r="90"/>
-    </g>
+    <!-- sun/coin shape -->
+    <circle cx="1040" cy="80" r="64" fill="#ffcc66" opacity="0.98" />
     <!-- headline text -->
     <text x="50%" y="52%" text-anchor="middle" fill="#fff" font-size="46" font-weight="700" font-family="Poppins, sans-serif" style="letter-spacing:1px">🐶 SoiDoggo191</text>
     <text x="50%" y="64%" text-anchor="middle" fill="#fff" font-size="18" font-weight="400">Real dogs. Real streets. Real support — Kabin Buri, Thailand</text>
@@ -110,14 +92,13 @@
       <input type="file" id="photoInput" accept="image/*" aria-label="Choose a photo to upload">
       <button class="btn" id="uploadBtn" onclick="uploadDog()" aria-controls="gallery">Upload with GPS 📍</button>
     </div>
-    <p class="small note">Uploads are stored locally on each device for now. To share globally, we'll add a backend.</p>
+    <p class="small note">Uploads are stored locally on each device for now.</p>
   </section>
 
   <!-- Recent sightings -->
   <section class="card" id="sightings">
     <h2>🐕 Recent Sightings</h2>
     <div id="gallery" class="gallery" aria-live="polite">
-      <!-- localStorage uploads will show here -->
       <div class="small">No recent device uploads yet — try the Upload with GPS button from a phone.</div>
     </div>
 
@@ -136,7 +117,6 @@
     <div style="margin-top:12px;">
       <a id="buyLink" class="coin-link" href="#" target="_blank" rel="noopener" title="Buy $SOI191 (replace href with pump.fun link)">
         <span class="coin" role="img" aria-label="Buy $SOI191 coin">
-          <!-- simple coin SVG so it always shows -->
           <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <defs>
               <linearGradient id="cg" x1="0" x2="0" y1="0" y2="1">
@@ -181,7 +161,7 @@
 </main>
 
 <script>
-/* Local upload system (device-scoped, unchanged core)
+/* Local upload system (device-scoped)
    - limit: 10 uploads per device per day
    - auto-delete: remove local entries older than 3 days
    - stores uploads in localStorage as array of {image,lat,lng,time}
@@ -252,8 +232,6 @@ function sendMail(){
 
 // initial render
 renderGallery();
-
-// show the static coords in the page (in case you want to programmatically change them)
 document.getElementById('lat').textContent = '13.7560243';
 document.getElementById('lng').textContent = '100.4986793';
 document.getElementById('mapLink').href = 'https://www.google.com/maps/search/?api=1&query=13.7560243,100.4986793';
