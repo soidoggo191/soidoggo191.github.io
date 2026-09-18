@@ -7,52 +7,109 @@
 
 <style>
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
-  background: #f5f5f5;
-  text-align: center;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f4f6f8;
+  color: #333;
 }
 
 header {
-  background: #ff914d;
+  background: linear-gradient(135deg, #ff914d, #ff6a00);
   color: white;
-  padding: 20px;
+  padding: 40px 20px;
+  text-align: center;
 }
 
-h1 {
+header h1 {
   margin: 0;
+  font-size: 2.5em;
+}
+
+header p {
+  margin-top: 10px;
+  font-size: 1.1em;
 }
 
 .container {
-  padding: 20px;
+  padding: 30px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+h2 {
+  margin-top: 40px;
+  color: #222;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .gallery img {
-  width: 250px;
+  width: 280px;
   margin: 10px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  border-radius: 14px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+  transition: transform 0.2s;
 }
 
-button {
-  padding: 12px 20px;
-  font-size: 16px;
-  background: #ff914d;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
+.gallery img:hover {
+  transform: scale(1.03);
+}
+
+.upload-box {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin-top: 20px;
 }
 
 input {
   margin: 10px;
 }
 
-footer {
+button {
+  padding: 12px 18px;
+  font-size: 16px;
+  background: #ff914d;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  background: #ff6a00;
+}
+
+.socials {
   margin-top: 30px;
-  padding: 15px;
+}
+
+.socials a {
+  display: inline-block;
+  margin: 10px;
+  padding: 10px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+.x { background: black; }
+.youtube { background: red; }
+.email { background: #555; }
+
+footer {
+  margin-top: 40px;
   background: #222;
   color: white;
+  padding: 20px;
+  text-align: center;
 }
 </style>
 </head>
@@ -61,66 +118,72 @@ footer {
 
 <header>
   <h1>🐶 SoiDoggo191</h1>
-  <p>Tracking stray dogs in Kabin Buri, Thailand</p>
+  <p>Helping stray dogs in Kabin Buri, Thailand 🇹🇭</p>
 </header>
 
 <div class="container">
 
-  <h2>❤️ Our Mission</h2>
+  <h2>❤️ Mission</h2>
   <p>
-    Photographing stray dogs and tagging their location to help reconnect lost dogs with their owners.
+    SoiDoggo191 is a grassroots project documenting stray dogs through photos and GPS locations.  
+    The goal is simple: increase the chances of reconnecting lost dogs with their owners and raise awareness for humane care.
   </p>
 
   <h2>📸 Upload a Dog</h2>
-  <input type="file" id="photoInput" accept="image/*">
-  <br>
-  <button onclick="uploadDog()">Upload with GPS 📍</button>
+  <div class="upload-box">
+    <input type="file" id="photoInput" accept="image/*">
+    <br>
+    <button onclick="uploadDog()">Upload with GPS 📍</button>
+  </div>
 
-  <h2>🐕 Dog Sightings</h2>
+  <h2>🐕 Recent Sightings</h2>
   <div class="gallery" id="gallery">
 
     <!-- YOUR REAL PHOTOS -->
-    <img src="FB_IMG(1).jpg">
-    <img src="gogg(1).jpg">
+    <img src="FB_IMG(1).jpg" alt="Dog 1">
+    <img src="gogg(1).jpg" alt="Dog 2">
 
+  </div>
+
+  <div class="socials">
+    <h2>🔗 Follow & Support</h2>
+
+    <a href="https://x.com/SoiDoggo191" target="_blank" class="x">X</a>
+
+    <a href="https://www.youtube.com/@SoiDoggo191" target="_blank" class="youtube">YouTube</a>
+
+    <a href="mailto:soidoggo191@gmail.com" class="email">Email</a>
   </div>
 
 </div>
 
 <footer>
-  <p>Follow the project:</p>
-  <p>
-    <a href="https://x.com/SoiDoggo191" style="color:#ff914d;">X</a> |
-    <a href="https://www.youtube.com/@SoiDoggo191" style="color:#ff914d;">YouTube</a>
-  </p>
+  <p>© 2026 SoiDoggo191 | Community-powered dog awareness project 🐾</p>
 </footer>
 
 <script>
 function uploadDog() {
-  const fileInput = document.getElementById("photoInput");
-  const file = fileInput.files[0];
+  const file = document.getElementById("photoInput").files[0];
 
   if (!file) {
-    alert("Select a photo first!");
+    alert("Please select a photo.");
     return;
   }
 
   navigator.geolocation.getCurrentPosition(position => {
-    const lat = position.coords.latitude;
-    const lng = position.coords.longitude;
-
     const reader = new FileReader();
-    reader.onload = function(e) {
-      const imgData = e.target.result;
 
+    reader.onload = function(e) {
       const img = document.createElement("img");
-      img.src = imgData;
-      img.title = "Lat: " + lat + ", Lng: " + lng;
+      img.src = e.target.result;
+      img.title = "Lat: " + position.coords.latitude + ", Lng: " + position.coords.longitude;
 
       document.getElementById("gallery").appendChild(img);
     };
 
     reader.readAsDataURL(file);
+  }, () => {
+    alert("Location access denied.");
   });
 }
 </script>
