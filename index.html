@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SoiDoggo191 🐶</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f5f5f5;
+  text-align: center;
+}
+
+header {
+  background: #ff914d;
+  color: white;
+  padding: 20px;
+}
+
+h1 {
+  margin: 0;
+}
+
+.container {
+  padding: 20px;
+}
+
+.gallery img {
+  width: 250px;
+  margin: 10px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+button {
+  padding: 12px 20px;
+  font-size: 16px;
+  background: #ff914d;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+input {
+  margin: 10px;
+}
+
+footer {
+  margin-top: 30px;
+  padding: 15px;
+  background: #222;
+  color: white;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>🐶 SoiDoggo191</h1>
+  <p>Tracking stray dogs in Kabin Buri, Thailand</p>
+</header>
+
+<div class="container">
+
+  <h2>❤️ Our Mission</h2>
+  <p>
+    Photographing stray dogs and tagging their location to help reconnect lost dogs with their owners.
+  </p>
+
+  <h2>📸 Upload a Dog</h2>
+  <input type="file" id="photoInput" accept="image/*">
+  <br>
+  <button onclick="uploadDog()">Upload with GPS 📍</button>
+
+  <h2>🐕 Dog Sightings</h2>
+  <div class="gallery" id="gallery">
+
+    <!-- YOUR REAL PHOTOS -->
+    <img src="FB_IMG(1).jpg">
+    <img src="gogg(1).jpg">
+
+  </div>
+
+</div>
+
+<footer>
+  <p>Follow the project:</p>
+  <p>
+    <a href="https://x.com/SoiDoggo191" style="color:#ff914d;">X</a> |
+    <a href="https://www.youtube.com/@SoiDoggo191" style="color:#ff914d;">YouTube</a>
+  </p>
+</footer>
+
+<script>
+function uploadDog() {
+  const fileInput = document.getElementById("photoInput");
+  const file = fileInput.files[0];
+
+  if (!file) {
+    alert("Select a photo first!");
+    return;
+  }
+
+  navigator.geolocation.getCurrentPosition(position => {
+    const lat = position.coords.latitude;
+    const lng = position.coords.longitude;
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const imgData = e.target.result;
+
+      const img = document.createElement("img");
+      img.src = imgData;
+      img.title = "Lat: " + lat + ", Lng: " + lng;
+
+      document.getElementById("gallery").appendChild(img);
+    };
+
+    reader.readAsDataURL(file);
+  });
+}
+</script>
+
+</body>
+</html>
