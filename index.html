@@ -4,104 +4,184 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>SoiDoggo191 — Real Dogs. Real Streets.</title>
+<meta name="description" content="SoiDoggo191 documents stray dogs in Kabin Buri, Thailand. Upload sightings, view recent photos with GPS, and support the mission via $SOI191." />
+<link rel="canonical" href="https://soidoggo191.github.io/" />
+<!-- Open Graph / Social -->
+<meta property="og:title" content="SoiDoggo191 — Real Dogs. Real Streets." />
+<meta property="og:description" content="Help find and document stray dogs in Kabin Buri. Upload photos with GPS and support via $SOI191." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://soidoggo191.github.io/" />
+<!-- fallback OG image: will work if you later upload banner.png to repo root -->
+<meta property="og:image" content="https://soidoggo191.github.io/banner.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="SoiDoggo191 — Real Dogs. Real Streets." />
+<meta name="twitter:description" content="Help find and document stray dogs in Kabin Buri. Upload photos with GPS and support via $SOI191." />
+
+<!-- Minimal favicon (emoji) as data URI -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐶</text></svg>">
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 <style>
+  :root{--accent:#ff6a00;--accent-2:#ff914d;--bg:#0b0f19;--card:rgba(255,255,255,0.05)}
   *{box-sizing:border-box;margin:0;padding:0;font-family:'Poppins',sans-serif;}
-  body{background:#0b0f19;color:#fff;line-height:1.45;}
-  .hero{height:60vh;background: center/cover no-repeat;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;}
-  .hero::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.45);}
+  html,body{height:100%}
+  body{background:var(--bg);color:#fff;line-height:1.45;-webkit-font-smoothing:antialiased;}
+  .hero{height:48vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;}
+  .hero-svg{position:absolute;inset:0;width:100%;height:100%;}
   .hero-content{position:relative;z-index:2;padding:20px;}
-  .hero h1{font-size:3rem;margin-bottom:8px;}
+  .hero h1{font-size:2.4rem;margin-bottom:6px;}
   .hero p{opacity:0.95;}
-  .container{max-width:1100px;margin:36px auto;padding:0 18px;}
-  .glass{background:rgba(255,255,255,0.05);padding:24px;border-radius:14px;backdrop-filter:blur(8px);}
+  .container{max-width:1100px;margin:26px auto;padding:0 18px;}
+  .card{background:var(--card);padding:20px;border-radius:12px;backdrop-filter:blur(6px);margin-bottom:18px;}
   h2{margin-bottom:8px;}
-  .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:18px;}
-  .gallery img{width:100%;border-radius:12px;box-shadow:0 8px 18px rgba(0,0,0,0.45);}
-  .actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:14px;}
-  .btn{background:#ff6a00;color:#fff;border:none;padding:12px 18px;border-radius:10px;cursor:pointer;font-weight:600;}
-  .btn:hover{background:#ff914d;}
-  .funding{background:linear-gradient(135deg,#ff6a00,#ff914d);padding:18px;border-radius:12px;margin-top:18px;text-align:center;}
-  .socials{display:flex;gap:10px;justify-content:center;margin-top:12px;}
-  .socials a{padding:10px 14px;border-radius:8px;color:#fff;text-decoration:none;font-weight:600;}
-  .x{background:#111} .youtube{background:#c4302b} .email{background:#555}
-  footer{text-align:center;padding:20px;background:#020617;margin-top:30px;}
+  .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:12px;}
+  .gallery img{width:100%;border-radius:10px;display:block;box-shadow:0 8px 18px rgba(0,0,0,0.45);}
+  .actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:12px;}
+  .btn{background:var(--accent);color:#fff;border:none;padding:10px 14px;border-radius:10px;cursor:pointer;font-weight:700;display:inline-flex;align-items:center;gap:8px;}
+  .btn:hover{background:var(--accent-2);}
+  .funding{background:linear-gradient(135deg,var(--accent),var(--accent-2));padding:18px;border-radius:12px;margin-top:8px;text-align:center;}
+  .socials{display:flex;gap:10px;justify-content:center;margin-top:12px;flex-wrap:wrap;}
+  .socials a{padding:8px 12px;border-radius:8px;color:#fff;text-decoration:none;font-weight:700;background:rgba(0,0,0,0.15)}
+  footer{text-align:center;padding:16px;background:#020617;margin-top:20px;border-radius:8px;}
   .small{font-size:0.95rem;opacity:0.95;}
   .note{font-style:italic;margin-top:10px;opacity:0.95;}
-  /* Responsive tweaks */
-  @media (max-width:520px){ .hero h1{font-size:2rem;} .container{margin:20px auto;} }
-  /* coin image styling */
-  .coin-link img{max-width:220px;width:100%;height:auto;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.5);border:6px solid rgba(0,0,0,0.25);background:#000;}
-  @media (max-width:520px){ .coin-link img{max-width:160px;} }
+  .coords{font-weight:700;margin-top:8px}
+  @media (max-width:520px){ .hero h1{font-size:1.6rem} .container{margin:14px auto} .hero{height:36vh} }
+  /* coin style */
+  .coin{width:120px;height:120px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 12px 28px rgba(0,0,0,0.6);border:6px solid rgba(255,255,255,0.06);background:linear-gradient(180deg,#ffd27a,#ffb84a);}
+  .coin svg{width:68%;height:68%;}
+  /* accessibility focus */
+  a:focus, button:focus{outline:3px solid rgba(255,255,255,0.12);outline-offset:3px}
 </style>
 </head>
 <body>
 
-<!-- HERO (embedded banner data URI) -->
-<section class="hero" id="hero" style="background-image: url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxAQDxAQEBAQEA8PDw8QEA8PDw8QEA8QFREWFhURExMYHSggGBolGxUVITEhJSkrLi4uFx8zODMtNygtLisBCgoKDg0OGhAQGy0lICUtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAJ8BPgMBIgACEQEDEQH/xAAcAAACAgMBAQAAAAAAAAAAAAAEBQMGAAIHAQj/xABAEAACAQIEAwUECQQDAwUAAAABAgADEQQSITEFQVEGImFxgZGhMrEUI0JSscHR4fAjQ1NicoKy8SM0Q1RDU3OT0+H/xAAaAQADAQEBAQAAAAAAAAAAAAABAgMABAUH/8QAMREAAQQABAMGBwEAAAAAAAAAAQACAxESITEEQRNRYXGB8BQiMqGxwdHh8TJC4fH/2gAMAwEAAhEDEQA/AL2QooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAooooAop//2Q==');">
+<!-- HERO: inline SVG banner (always renders) -->
+<section class="hero" aria-label="SoiDoggo191 hero banner">
+  <svg class="hero-svg" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice" role="img" aria-hidden="true">
+    <!-- soft gradient background -->
+    <defs>
+      <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
+        <stop offset="0%" stop-color="#07102a"/>
+        <stop offset="60%" stop-color="#0b1628"/>
+        <stop offset="100%" stop-color="#0b0f19"/>
+      </linearGradient>
+      <filter id="grain"><feTurbulence baseFrequency="0.8" numOctaves="1" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+    </defs>
+    <rect width="1200" height="400" fill="url(#g1)"/>
+    <!-- stylized temple silhouette -->
+    <g transform="translate(200,60) scale(0.9)" fill="#ffd27a" opacity="0.95">
+      <path d="M0,150 L60,80 L120,150 L180,80 L240,150 L220,150 L220,200 L0,200 Z"/>
+    </g>
+    <!-- "coin" sun -->
+    <circle cx="1040" cy="80" r="58" fill="#ffcc66" opacity="0.95"/>
+
+    <!-- decorative paw -->
+    <g transform="translate(70,60)" fill="#ffffff" opacity="0.06">
+      <circle cx="0" cy="0" r="90"/>
+    </g>
+    <!-- headline text -->
+    <text x="50%" y="52%" text-anchor="middle" fill="#fff" font-size="46" font-weight="700" font-family="Poppins, sans-serif" style="letter-spacing:1px">🐶 SoiDoggo191</text>
+    <text x="50%" y="64%" text-anchor="middle" fill="#fff" font-size="18" font-weight="400">Real dogs. Real streets. Real support — Kabin Buri, Thailand</text>
+  </svg>
+
   <div class="hero-content">
     <h1>🐶 SoiDoggo191</h1>
     <p class="small">Real dogs. Real streets. Real support — Kabin Buri, Thailand</p>
   </div>
 </section>
 
-<div class="container">
-  <div class="glass">
+<main class="container" id="maincontent">
+  <!-- What this is -->
+  <section class="card" id="about">
     <h2>❤️ What this really is</h2>
     <p class="small">
       This project is run by a person on the ground. The creator travels Kabin Buri to find, document, and help stray dogs.
       Photos and GPS locations are collected for visibility and to increase chances of reunion.
     </p>
     <p class="note">"ช่วยกันคนละนิด เพื่อชีวิตที่ดีขึ้นของพวกเขา"</p>
-  </div>
+  </section>
 
-  <div class="glass" style="margin-top:18px;text-align:center;">
+  <!-- Upload -->
+  <section class="card" id="upload">
     <h2>📸 Community Upload (Limited)</h2>
     <p class="small">Limit 10 uploads per device per day. Uploaded photos are automatically removed locally after 3 days.</p>
-    <div class="actions">
-      <input type="file" id="photoInput" accept="image/*">
-      <button class="btn" onclick="uploadDog()">Upload with GPS 📍</button>
+    <div class="actions" aria-hidden="false">
+      <input type="file" id="photoInput" accept="image/*" aria-label="Choose a photo to upload">
+      <button class="btn" id="uploadBtn" onclick="uploadDog()" aria-controls="gallery">Upload with GPS 📍</button>
     </div>
-  </div>
+    <p class="small note">Uploads are stored locally on each device for now. To share globally, we'll add a backend.</p>
+  </section>
 
-  <div class="glass" style="margin-top:18px;">
+  <!-- Recent sightings -->
+  <section class="card" id="sightings">
     <h2>🐕 Recent Sightings</h2>
-    <div class="gallery" id="gallery">
-      <img src="dog1.jpg" alt="dog 1">
-      <img src="dog2.jpg" alt="dog 2">
+    <div id="gallery" class="gallery" aria-live="polite">
+      <!-- localStorage uploads will show here -->
+      <div class="small">No recent device uploads yet — try the Upload with GPS button from a phone.</div>
     </div>
-  </div>
 
-  <div class="funding" style="margin-top:18px;">
+    <div class="coords">
+      Lat: <span id="lat">13.7560243</span>, Lng: <span id="lng">100.4986793</span>
+      — <a id="mapLink" href="https://www.google.com/maps/search/?api=1&query=13.7560243,100.4986793" target="_blank" rel="noopener">Open in Google Maps</a>
+    </div>
+  </section>
+
+  <!-- Funding / buy -->
+  <section class="funding card" id="funding">
     <h3>💛 Support the mission — <strong>$SOI191</strong></h3>
     <p class="small">Funds support fuel, time, and equipment for the creator who documents these dogs in Kabin Buri.</p>
 
-    <!-- COIN IMAGE: embedded coin data URI below. Replace href="#" with your pump.fun buy URL -->
+    <!-- Clickable coin (SVG) — replace href="#" with your pump.fun buy URL -->
     <div style="margin-top:12px;">
-      <a id="buyLink" class="coin-link" href="#" target="_blank" title="Buy $SOI191 (replace href with pump.fun link)">
-        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxAQEBIQEA8PDw8QEA8PDw8QEA8PDw8QFREWFhURExMYHSggGBolHRUTITEhJSkrLi4uFx8zODYtNygtLisBCgoKDg0OGhAQGy0lICYtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAJ8BPgMBIgACEQEDEQH/xAAcAAABBQEBAQAAAAAAAAAAAAAFAQIDBAYHAQj/xABFEAACAQIEAwUEBQgDAwUAAAABAgADEQQSITEFQVEGImFxgZGhMrEUI0JSsdHh8CMzQ3JicoKS4fEkQ1RDU3ODk6LS/8QAGgEBAQEBAQEBAAAAAAAAAAAAAAECBAMFBv/EADURAAICAgEDAgQEBwEAAAAAAAECAxEEITESQVEUInGBExRhcfAykaGxwdHh8QRC4fEjM0Ni/9oADAMBAAIRAxEAPwDwqKKAOqrq6q6qqo6qqq6q6q6q6q6q6q6q6q6qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//2Q==" alt="Buy $SOI191 — click to buy">
+      <a id="buyLink" class="coin-link" href="#" target="_blank" rel="noopener" title="Buy $SOI191 (replace href with pump.fun link)">
+        <span class="coin" role="img" aria-label="Buy $SOI191 coin">
+          <!-- simple coin SVG so it always shows -->
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="cg" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="#ffe8a8"/>
+                <stop offset="100%" stop-color="#ffb84a"/>
+              </linearGradient>
+            </defs>
+            <circle cx="50" cy="50" r="46" fill="url(#cg)" stroke="#b36b00" stroke-width="2"/>
+            <text x="50%" y="55%" text-anchor="middle" font-size="28" font-family="Poppins, sans-serif" fill="#5a2d00" font-weight="700">$</text>
+            <text x="50%" y="78%" text-anchor="middle" font-size="10" fill="#5a2d00">SOI191</text>
+          </svg>
+        </span>
       </a>
     </div>
 
     <p class="small note" style="margin-top:10px;">The token will be community-driven and transparent. Details will be posted before launch.</p>
-  </div>
+  </section>
 
-  <div class="glass" style="margin-top:18px;text-align:center;">
+  <!-- Contact + socials -->
+  <section class="card" id="contact">
     <h2>🔗 Follow & Contact</h2>
-    <div class="socials">
-      <a class="x" href="https://x.com/SoiDoggo191" target="_blank">X</a>
-      <a class="youtube" href="https://www.youtube.com/@SoiDoggo191" target="_blank">YouTube</a>
+    <div class="socials" role="navigation" aria-label="social links">
+      <a class="x" href="https://x.com/SoiDoggo191" target="_blank" rel="noopener">X</a>
+      <a class="youtube" href="https://www.youtube.com/@SoiDoggo191" target="_blank" rel="noopener">YouTube</a>
       <a class="email" href="mailto:soidoggo191@gmail.com">Email</a>
     </div>
-  </div>
+
+    <div style="margin-top:12px;">
+      <form id="contactForm" onsubmit="return sendMail()" aria-label="Contact form">
+        <label class="small" for="mname">Name (optional)</label><br/>
+        <input id="mname" name="name" placeholder="Your name" style="width:100%;padding:8px;margin-top:6px;border-radius:6px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:#fff"><br/>
+        <label class="small" for="mbody" style="margin-top:8px;display:block;">Message</label>
+        <textarea id="mbody" name="body" required placeholder="Message about a dog or partnership..." style="width:100%;min-height:80px;padding:8px;margin-top:6px;border-radius:6px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:#fff"></textarea><br/>
+        <button type="submit" class="btn" style="margin-top:8px">Send Email</button>
+      </form>
+    </div>
+  </section>
 
   <footer>
     <p>© 2026 SoiDoggo191 🐾</p>
   </footer>
-</div>
+</main>
 
 <script>
-/* Local upload system (device-scoped)
+/* Local upload system (device-scoped, unchanged core)
    - limit: 10 uploads per device per day
    - auto-delete: remove local entries older than 3 days
    - stores uploads in localStorage as array of {image,lat,lng,time}
@@ -130,9 +210,10 @@ function uploadDog(){
       alert('Uploaded — thank you. The creator will review submissions.');
     };
     reader.readAsDataURL(file);
-  }, function(){
-    alert('Location access denied. Upload cancelled.');
-  }, { enableHighAccuracy: false, timeout: 10000 });
+  }, function(err){
+    alert('Location access denied or unavailable. Upload cancelled.');
+    console.warn('Geolocation error', err);
+  }, { enableHighAccuracy: false, timeout: 12000 });
 }
 
 function renderGallery(){
@@ -142,16 +223,40 @@ function renderGallery(){
   var now = Date.now();
   uploads = uploads.filter(function(u){ return (now - u.time) < (3*24*60*60*1000); });
   localStorage.setItem('uploads', JSON.stringify(uploads));
+  if(uploads.length === 0){
+    gallery.innerHTML = '<div class="small">No recent device uploads yet — try the Upload with GPS button from a phone.</div>';
+    return;
+  }
   uploads.forEach(function(u){
     var img = document.createElement('img');
     img.src = u.image;
+    img.alt = 'Sighting photo';
     img.title = 'Lat: ' + u.lat + ', Lng: ' + u.lng;
+    img.style.cursor = 'pointer';
+    img.addEventListener('click', function(){ window.open('https://www.google.com/maps/search/?api=1&query=' + u.lat + ',' + u.lng, '_blank'); });
     gallery.appendChild(img);
   });
 }
 
+// contact form helper: opens user's email client with prefilled fields (works in most browsers)
+function sendMail(){
+  var name = document.getElementById('mname').value || 'Anonymous';
+  var body = document.getElementById('mbody').value || '';
+  var subject = encodeURIComponent('Contact from SoiDoggo191 site — ' + name);
+  var mailto = 'mailto:soidoggo191@gmail.com'
+           + '?subject=' + subject
+           + '&body=' + encodeURIComponent(body + '\n\nFrom: ' + name);
+  window.location.href = mailto;
+  return false;
+}
+
 // initial render
 renderGallery();
+
+// show the static coords in the page (in case you want to programmatically change them)
+document.getElementById('lat').textContent = '13.7560243';
+document.getElementById('lng').textContent = '100.4986793';
+document.getElementById('mapLink').href = 'https://www.google.com/maps/search/?api=1&query=13.7560243,100.4986793';
 </script>
 </body>
 </html>
