@@ -1,203 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SoiDoggo191 🐶</title>
-
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>SoiDoggo191 — Real Dogs. Real Streets.</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-
-body{background:#0b0f19;color:white;}
-
-.hero{
-height:100vh;
-background:url('https://images.unsplash.com/photo-1548199973-03cce0bbc87b') center/cover no-repeat;
-display:flex;align-items:center;justify-content:center;text-align:center;position:relative;
-}
-.hero::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,0.65);}
-.hero-content{position:relative;z-index:2;}
-.hero h1{font-size:3rem;}
-
-.section{padding:60px 20px;max-width:1100px;margin:auto;}
-
-.glass{
-background:rgba(255,255,255,0.05);
-border-radius:20px;
-padding:30px;
-backdrop-filter:blur(12px);
-}
-
-.gallery{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:20px;margin-top:20px;
-}
-
-.gallery img{
-width:100%;
-border-radius:15px;
-box-shadow:0 8px 18px rgba(0,0,0,0.4);
-}
-
-button{
-padding:14px 22px;border-radius:10px;border:none;
-background:#ff6a00;color:white;font-size:16px;cursor:pointer;
-}
-button:hover{background:#ff914d;}
-
-.socials{
-display:flex;justify-content:center;flex-wrap:wrap;gap:15px;margin-top:20px;
-}
-.socials a{
-padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:bold;color:white;
-}
-.x{background:black;}
-.youtube{background:red;}
-.email{background:gray;}
-
-.funding-box{
-background:linear-gradient(135deg,#ff6a00,#ff914d);
-padding:25px;border-radius:15px;text-align:center;
-}
-
-footer{text-align:center;padding:20px;background:#020617;}
+  *{box-sizing:border-box;margin:0;padding:0;font-family:'Poppins',sans-serif;}
+  body{background:#0b0f19;color:#fff;line-height:1.45;}
+  .hero{height:60vh;background: center/cover no-repeat;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;}
+  .hero::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.45);}
+  .hero-content{position:relative;z-index:2;padding:20px;}
+  .hero h1{font-size:3rem;margin-bottom:8px;}
+  .hero p{opacity:0.95;}
+  .container{max-width:1100px;margin:36px auto;padding:0 18px;}
+  .glass{background:rgba(255,255,255,0.05);padding:24px;border-radius:14px;backdrop-filter:blur(8px);}
+  h2{margin-bottom:8px;}
+  .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:18px;}
+  .gallery img{width:100%;border-radius:12px;box-shadow:0 8px 18px rgba(0,0,0,0.45);}
+  .actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:14px;}
+  .btn{background:#ff6a00;color:#fff;border:none;padding:12px 18px;border-radius:10px;cursor:pointer;font-weight:600;}
+  .btn:hover{background:#ff914d;}
+  .funding{background:linear-gradient(135deg,#ff6a00,#ff914d);padding:18px;border-radius:12px;margin-top:18px;text-align:center;}
+  .socials{display:flex;gap:10px;justify-content:center;margin-top:12px;}
+  .socials a{padding:10px 14px;border-radius:8px;color:#fff;text-decoration:none;font-weight:600;}
+  .x{background:#111} .youtube{background:#c4302b} .email{background:#555}
+  footer{text-align:center;padding:20px;background:#020617;margin-top:30px;}
+  .small{font-size:0.95rem;opacity:0.95;}
+  .note{font-style:italic;margin-top:10px;opacity:0.95;}
+  /* Responsive tweaks */
+  @media (max-width:520px){ .hero h1{font-size:2rem;} .container{margin:20px auto;} }
 </style>
 </head>
-
 <body>
 
-<section class="hero">
-<div class="hero-content">
-<h1>🐶 SoiDoggo191</h1>
-<p>Real dogs. Real streets. Real effort 🇹🇭</p>
-</div>
+<!-- HERO (banner image file: banner.png) -->
+<section class="hero" id="hero" style="background-image: url('banner.png');">
+  <div class="hero-content">
+    <h1>🐶 SoiDoggo191</h1>
+    <p class="small">Real dogs. Real streets. Real support — Kabin Buri, Thailand</p>
+  </div>
 </section>
 
-<section class="section">
-<div class="glass">
-<h2>❤️ What This Really Is</h2>
-<p>
-This project is not automated. It is not random uploads.
-<br><br>
-The creator of SoiDoggo191 personally goes out into the streets of Kabin Buri,
-finding stray and possibly lost dogs — photographing them and recording their locations.
-<br><br>
-Every photo is taken with purpose:
-to give these dogs visibility, and a chance to be seen again.
-</p>
-<p style="margin-top:10px;font-style:italic;">
-"ช่วยกันคนละนิด เพื่อชีวิตที่ดีขึ้นของพวกเขา"
-</p>
-</div>
-</section>
+<div class="container">
+  <div class="glass">
+    <h2>❤️ What this really is</h2>
+    <p class="small">
+      This project is run by a person on the ground. The creator travels Kabin Buri to find, document, and help stray dogs.
+      Photos and GPS locations are collected for visibility and to increase chances of reunion.
+    </p>
+    <p class="note">"ช่วยกันคนละนิด เพื่อชีวิตที่ดีขึ้นของพวกเขา"</p>
+  </div>
 
-<section class="section">
-<div class="glass" style="text-align:center;">
-<h2>📸 Community Upload (Limited)</h2>
-<p style="font-size:14px;opacity:0.8;">
-Max 10 uploads per day. Photos auto-remove after 3 days.
-</p>
-<input type="file" id="photoInput">
-<br><br>
-<button onclick="uploadDog()">Upload with GPS 📍</button>
-</div>
-</section>
+  <div class="glass" style="margin-top:18px;text-align:center;">
+    <h2>📸 Community Upload (Limited)</h2>
+    <p class="small">Limit 10 uploads per device per day. Uploaded photos are automatically removed locally after 3 days.</p>
+    <div class="actions">
+      <input type="file" id="photoInput" accept="image/*">
+      <button class="btn" onclick="uploadDog()">Upload with GPS 📍</button>
+    </div>
+  </div>
 
-<section class="section">
-<h2>🐕 Sightings</h2>
-<div class="gallery" id="gallery"></div>
-</section>
+  <div class="glass" style="margin-top:18px;">
+    <h2>🐕 Recent Sightings</h2>
+    <div class="gallery" id="gallery">
+      <img src="dog1.jpg" alt="dog 1">
+      <img src="dog2.jpg" alt="dog 2">
+    </div>
+  </div>
 
-<section class="section">
-<div class="funding-box">
-<h3>💛 Support the Work — $SOI191</h3>
-<p>
-This project exists because someone is physically out there doing the work.
-<br><br>
-$SOI191 directly supports that effort:
-fuel, time, and the ability to continue documenting stray dogs.
-<br><br>
-If you believe in this mission, you can support it below.
-</p>
-<br>
-<a href="#" target="_blank">
-<button>🚀 Buy $SOI191</button>
-</a>
-</div>
-</section>
+  <div class="funding" style="margin-top:18px;">
+    <h3>💛 Support the mission — <strong>$SOI191</strong></h3>
+    <p class="small">Funds support fuel, time, and equipment for the creator who documents these dogs in Kabin Buri.</p>
+    <div style="margin-top:12px;">
+      <!-- REPLACE the href below with your pump.fun buy link when ready -->
+      <a id="buyLink" href="#" target="_blank"><button class="btn">🚀 Buy $SOI191</button></a>
+    </div>
+    <p class="small note" style="margin-top:10px;">The token will be community-driven and transparent. Details will be posted before launch.</p>
+  </div>
 
-<section class="section">
-<div class="glass">
-<h2>🔗 Follow</h2>
-<div class="socials">
-<a href="https://x.com/SoiDoggo191" target="_blank" class="x">X</a>
-<a href="https://www.youtube.com/@SoiDoggo191" target="_blank" class="youtube">YouTube</a>
-<a href="mailto:soidoggo191@gmail.com" class="email">Email</a>
-</div>
-</div>
-</section>
+  <div class="glass" style="margin-top:18px;text-align:center;">
+    <h2>🔗 Follow & Contact</h2>
+    <div class="socials">
+      <a class="x" href="https://x.com/SoiDoggo191" target="_blank">X</a>
+      <a class="youtube" href="https://www.youtube.com/@SoiDoggo191" target="_blank">YouTube</a>
+      <a class="email" href="mailto:soidoggo191@gmail.com">Email</a>
+    </div>
+  </div>
 
-<footer>
-<p>© 2026 SoiDoggo191 🐾</p>
-</footer>
+  <footer>
+    <p>© 2026 SoiDoggo191 🐾</p>
+  </footer>
+</div>
 
 <script>
-function uploadDog() {
-const file = document.getElementById("photoInput").files[0];
-if (!file) return alert("Select a photo");
+/* Local upload system (device-scoped)
+   - limit: 10 uploads per device per day
+   - auto-delete: remove local entries older than 3 days
+   - stores uploads in localStorage as array of {image,lat,lng,time}
+*/
+function uploadDog(){
+  var fileEl = document.getElementById('photoInput');
+  var file = fileEl.files[0];
+  if(!file){ alert('Select a photo'); return; }
 
-let uploads = JSON.parse(localStorage.getItem("uploads") || "[]");
-let today = new Date().toDateString();
+  var uploads = JSON.parse(localStorage.getItem('uploads')||'[]');
+  var today = new Date().toDateString();
+  var todayCount = uploads.filter(function(u){ return new Date(u.time).toDateString()===today; }).length;
+  if(todayCount >= 10){ alert('Daily upload limit reached (10)'); return; }
 
-// limit 10/day
-let todayCount = uploads.filter(u => new Date(u.time).toDateString() === today).length;
-if (todayCount >= 10) {
-alert("Daily upload limit reached (10)");
-return;
+  var now = Date.now();
+  // prune >3 days
+  uploads = uploads.filter(function(u){ return (now - u.time) < (3*24*60*60*1000); });
+
+  navigator.geolocation.getCurrentPosition(function(pos){
+    var reader = new FileReader();
+    reader.onload = function(e){
+      uploads.push({image:e.target.result, lat:pos.coords.latitude, lng:pos.coords.longitude, time:Date.now()});
+      localStorage.setItem('uploads', JSON.stringify(uploads));
+      renderGallery();
+      fileEl.value = '';
+      alert('Uploaded — thank you. The creator will review submissions.');
+    };
+    reader.readAsDataURL(file);
+  }, function(){
+    alert('Location access denied. Upload cancelled.');
+  }, { enableHighAccuracy: false, timeout: 10000 });
 }
 
-// remove older than 3 days
-let now = Date.now();
-uploads = uploads.filter(u => (now - u.time) < (3 * 24 * 60 * 60 * 1000));
-
-navigator.geolocation.getCurrentPosition(pos => {
-const reader = new FileReader();
-reader.onload = e => {
-
-const data = {
-image: e.target.result,
-lat: pos.coords.latitude,
-lng: pos.coords.longitude,
-time: Date.now()
-};
-
-uploads.push(data);
-localStorage.setItem("uploads", JSON.stringify(uploads));
-
-renderGallery();
-};
-reader.readAsDataURL(file);
-});
+function renderGallery(){
+  var gallery = document.getElementById('gallery');
+  gallery.innerHTML = '';
+  var uploads = JSON.parse(localStorage.getItem('uploads')||'[]');
+  var now = Date.now();
+  uploads = uploads.filter(function(u){ return (now - u.time) < (3*24*60*60*1000); });
+  localStorage.setItem('uploads', JSON.stringify(uploads));
+  uploads.forEach(function(u){
+    var img = document.createElement('img');
+    img.src = u.image;
+    img.title = 'Lat: ' + u.lat + ', Lng: ' + u.lng;
+    gallery.appendChild(img);
+  });
 }
 
-function renderGallery() {
-let uploads = JSON.parse(localStorage.getItem("uploads") || "[]");
-const gallery = document.getElementById("gallery");
-gallery.innerHTML = "";
-
-uploads.forEach(dog => {
-const img = document.createElement("img");
-img.src = dog.image;
-img.title = "Lat: " + dog.lat + ", Lng: " + dog.lng;
-gallery.appendChild(img);
-});
-}
-
+// initial render
 renderGallery();
 </script>
-
 </body>
 </html>
