@@ -5,185 +5,198 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SoiDoggo191 🐶</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+
 <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
 body {
-  margin: 0;
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background: #f4f6f8;
-  color: #333;
-}
-
-header {
-  background: linear-gradient(135deg, #ff914d, #ff6a00);
+  background: #0f172a;
   color: white;
-  padding: 40px 20px;
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  background: url('https://images.unsplash.com/photo-1548199973-03cce0bbc87b') center/cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+  position: relative;
 }
 
-header h1 {
-  margin: 0;
-  font-size: 2.5em;
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
 }
 
-header p {
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 {
+  font-size: 3rem;
+}
+
+.hero p {
   margin-top: 10px;
-  font-size: 1.1em;
+  font-size: 1.2rem;
+  opacity: 0.9;
 }
 
-.container {
-  padding: 30px 20px;
-  max-width: 1000px;
+/* SECTION */
+.section {
+  padding: 60px 20px;
+  max-width: 1100px;
   margin: auto;
 }
 
-h2 {
-  margin-top: 40px;
-  color: #222;
+.glass {
+  background: rgba(255,255,255,0.05);
+  border-radius: 20px;
+  padding: 30px;
+  backdrop-filter: blur(12px);
 }
 
+/* GALLERY */
 .gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
 }
 
 .gallery img {
-  width: 280px;
-  margin: 10px;
-  border-radius: 14px;
-  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
-  transition: transform 0.2s;
+  width: 100%;
+  border-radius: 15px;
+  transition: 0.3s;
 }
 
 .gallery img:hover {
-  transform: scale(1.03);
+  transform: scale(1.05);
 }
 
-.upload-box {
-  background: white;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  margin-top: 20px;
-}
-
-input {
-  margin: 10px;
-}
-
+/* BUTTONS */
 button {
-  padding: 12px 18px;
-  font-size: 16px;
-  background: #ff914d;
-  color: white;
+  padding: 14px 22px;
+  border-radius: 10px;
   border: none;
-  border-radius: 8px;
+  background: #ff6a00;
+  color: white;
+  font-size: 16px;
   cursor: pointer;
-  transition: 0.2s;
+  margin-top: 10px;
 }
 
 button:hover {
-  background: #ff6a00;
+  background: #ff914d;
 }
 
+/* SOCIAL */
 .socials {
-  margin-top: 30px;
+  text-align: center;
+  margin-top: 20px;
 }
 
 .socials a {
-  display: inline-block;
   margin: 10px;
-  padding: 10px 18px;
-  border-radius: 8px;
   text-decoration: none;
-  color: white;
+  padding: 12px 18px;
+  border-radius: 8px;
   font-weight: bold;
+  color: white;
 }
 
 .x { background: black; }
 .youtube { background: red; }
-.email { background: #555; }
+.email { background: gray; }
 
+/* FOOTER */
 footer {
-  margin-top: 40px;
-  background: #222;
-  color: white;
-  padding: 20px;
   text-align: center;
+  padding: 20px;
+  background: #020617;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-  <h1>🐶 SoiDoggo191</h1>
-  <p>Helping stray dogs in Kabin Buri, Thailand 🇹🇭</p>
-</header>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>🐶 SoiDoggo191</h1>
+    <p>Helping stray dogs in Kabin Buri, Thailand 🇹🇭</p>
+  </div>
+</section>
 
-<div class="container">
+<!-- MISSION -->
+<section class="section">
+  <div class="glass">
+    <h2>❤️ Our Mission</h2>
+    <p>
+      We photograph stray dogs and tag their locations to help reconnect them with their owners.
+      A simple idea—powered by community and compassion.
+    </p>
+  </div>
+</section>
 
-  <h2>❤️ Mission</h2>
-  <p>
-    SoiDoggo191 is a grassroots project documenting stray dogs through photos and GPS locations.  
-    The goal is simple: increase the chances of reconnecting lost dogs with their owners and raise awareness for humane care.
-  </p>
-
-  <h2>📸 Upload a Dog</h2>
-  <div class="upload-box">
-    <input type="file" id="photoInput" accept="image/*">
+<!-- UPLOAD -->
+<section class="section">
+  <div class="glass">
+    <h2>📸 Upload a Dog</h2>
+    <input type="file" id="photoInput">
     <br>
     <button onclick="uploadDog()">Upload with GPS 📍</button>
   </div>
+</section>
 
+<!-- GALLERY -->
+<section class="section">
   <h2>🐕 Recent Sightings</h2>
   <div class="gallery" id="gallery">
-
-    <!-- YOUR REAL PHOTOS -->
-    <img src="FB_IMG(1).jpg" alt="Dog 1">
-    <img src="gogg(1).jpg" alt="Dog 2">
-
+    <img src="dog1.jpg">
+    <img src="dog2.jpg">
   </div>
+</section>
 
-  <div class="socials">
+<!-- SOCIAL -->
+<section class="section">
+  <div class="glass socials">
     <h2>🔗 Follow & Support</h2>
-
     <a href="https://x.com/SoiDoggo191" target="_blank" class="x">X</a>
-
     <a href="https://www.youtube.com/@SoiDoggo191" target="_blank" class="youtube">YouTube</a>
-
     <a href="mailto:soidoggo191@gmail.com" class="email">Email</a>
   </div>
-
-</div>
+</section>
 
 <footer>
-  <p>© 2026 SoiDoggo191 | Community-powered dog awareness project 🐾</p>
+  <p>© 2026 SoiDoggo191 🐾</p>
 </footer>
 
 <script>
 function uploadDog() {
   const file = document.getElementById("photoInput").files[0];
+  if (!file) return alert("Select a photo");
 
-  if (!file) {
-    alert("Please select a photo.");
-    return;
-  }
-
-  navigator.geolocation.getCurrentPosition(position => {
+  navigator.geolocation.getCurrentPosition(pos => {
     const reader = new FileReader();
-
-    reader.onload = function(e) {
+    reader.onload = e => {
       const img = document.createElement("img");
       img.src = e.target.result;
-      img.title = "Lat: " + position.coords.latitude + ", Lng: " + position.coords.longitude;
-
+      img.title = "Lat: " + pos.coords.latitude + ", Lng: " + pos.coords.longitude;
       document.getElementById("gallery").appendChild(img);
     };
-
     reader.readAsDataURL(file);
-  }, () => {
-    alert("Location access denied.");
   });
 }
 </script>
