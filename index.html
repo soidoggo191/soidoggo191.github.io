@@ -37,8 +37,8 @@
 </head>
 <body>
 
-<!-- HERO (banner image file: banner.png) -->
-<section class="hero" id="hero" style="background-image: url('banner.png');">
+<!-- HERO (AI banner image hosted on the session backend) -->
+<section class="hero" id="hero" style="background-image: url('https://chatgpt.com/backend-api/estuary/content?id=file_00000000c49c81fa914bf65961662dd7&ts=497145&p=fs&cid=1&sig=891349beedb065d5bc7d99e5843b861fddccec0ea71b25642c1bc93abc246f28&v=0');">
   <div class="hero-content">
     <h1>🐶 SoiDoggo191</h1>
     <p class="small">Real dogs. Real streets. Real support — Kabin Buri, Thailand</p>
@@ -67,6 +67,8 @@
   <div class="glass" style="margin-top:18px;">
     <h2>🐕 Recent Sightings</h2>
     <div class="gallery" id="gallery">
+      <!-- If you want the existing photos to appear without uploading, you can substitute direct links below.
+           These are left as filenames so you (or I) can change them later. -->
       <img src="dog1.jpg" alt="dog 1">
       <img src="dog2.jpg" alt="dog 2">
     </div>
@@ -77,11 +79,12 @@
     <p class="small">Funds support fuel, time, and equipment for the creator who documents these dogs in Kabin Buri.</p>
 
     <!-- COIN IMAGE: clickable coin replaces the old button.
-         Replace href="#" with your pump.fun buy URL (example: https://pump.fun/<yourtoken>)
+         This uses the hosted image (replace href="#" with your pump.fun link).
+         If you prefer an embedded (data URI) coin instead, tell me and I'll paste that as base64.
     -->
     <div style="margin-top:12px;">
       <a id="buyLink" class="coin-link" href="#" target="_blank" title="Buy $SOI191 (replace href with pump.fun link)">
-        <img src="coin.png" alt="Buy $SOI191 — click to buy">
+        <img src="https://chatgpt.com/backend-api/estuary/content?id=file_000000005b2c81f59d43df21f84275d8&ts=497145&p=fs&cid=1&sig=b72491992ba242acb511338ed0baded38bb7f5fac516d279280993ac4aca36f8&v=0" alt="Buy $SOI191 — click to buy">
       </a>
     </div>
 
