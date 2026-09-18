@@ -30,6 +30,9 @@
   .note{font-style:italic;margin-top:10px;opacity:0.95;}
   /* Responsive tweaks */
   @media (max-width:520px){ .hero h1{font-size:2rem;} .container{margin:20px auto;} }
+  /* coin image styling */
+  .coin-link img{max-width:220px;width:100%;height:auto;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.5);border:6px solid rgba(0,0,0,0.25);background:#000;}
+  @media (max-width:520px){ .coin-link img{max-width:160px;} }
 </style>
 </head>
 <body>
@@ -72,10 +75,16 @@
   <div class="funding" style="margin-top:18px;">
     <h3>💛 Support the mission — <strong>$SOI191</strong></h3>
     <p class="small">Funds support fuel, time, and equipment for the creator who documents these dogs in Kabin Buri.</p>
+
+    <!-- COIN IMAGE: clickable coin replaces the old button.
+         Replace href="#" with your pump.fun buy URL (example: https://pump.fun/<yourtoken>)
+    -->
     <div style="margin-top:12px;">
-      <!-- REPLACE the href below with your pump.fun buy link when ready -->
-      <a id="buyLink" href="#" target="_blank"><button class="btn">🚀 Buy $SOI191</button></a>
+      <a id="buyLink" class="coin-link" href="#" target="_blank" title="Buy $SOI191 (replace href with pump.fun link)">
+        <img src="coin.png" alt="Buy $SOI191 — click to buy">
+      </a>
     </div>
+
     <p class="small note" style="margin-top:10px;">The token will be community-driven and transparent. Details will be posted before launch.</p>
   </div>
 
